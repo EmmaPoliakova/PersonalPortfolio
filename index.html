@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-      <!--<script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script> -->
+       <!-- <script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script> -->
 
     <!--
 
@@ -54,7 +54,7 @@
 
       window.addEventListener('load', function () {
         simplePeer = new smartcontroller.ScrollSmartController(firstConnected = true);
-        simplePeer.createQrCode('https://smartcontrollerjs.github.io/Controllers/blog_scroll_portfolio.html', 'qrcode', 150, 150,  "1", 0, false);
+        simplePeer.createQrCode('https://smartcontrollerjs.github.io/Controllers/blog_scroll_portfolio.html', 'qrcode', 100, 100,  "1", 0, false);
 
         simplePeer.on("connection", function (data) {
           console.log(simplePeer.controllerList)
@@ -113,9 +113,6 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav fw-bold">
               <li class="nav-item">
-                <a class="nav-link" href="#home">Home</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#about">About</a>
               </li>
               <li class="nav-item">
@@ -131,43 +128,30 @@
 
       <div data-bs-spy="scroll" data-bs-target="#scrolling_navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
 
-        <section class="min-vh-100 d-flex flex-wrap align-content-center" id="home" style="background-image: url('image/home.jpg'); background-size: cover;">
-          <div class="container d-flex align-items-center py-5">
-              <div class="col text-center bg-light m-4 p-4 text-dark bg-opacity-50 rounded-5 border border-2 border-white">
-                  <!--<img src="image/me.jpg" class="img-fluid col-lg-2 col-sm-6 col-xs-6 mb-4"> -->
-                <p class="display-2 text-secondary mb-3"style="color:#fcba03;">Emma Poliakova</p>
-                <p class="text-secondary fs-5 mb-6">Welcome to my portfolio website! </p>
-                <a href="https://github.com/EmmaPoliakova" target="_blank">
-                  <img src="git.png" height="45px" width="45px"> Github
-                </a>
-                    &nbsp; &nbsp;
-                <a href="https://www.linkedin.com/in/emma-poliakova-a956941a3/" target="_blank">
-                  <img src="link.png" height="50px" width="50px"> Linkedin
-                </a>
-                <div class="qrcode" id="qrcode" ></div>
-                <div style="color:grey" class="qrcode">Reading CVs is boring, scan the QR code to make it more exciting! This will let you control the website with your phone.
-                Bonus: If you hide your phone while someone is looking, you will look like a wizard!</div>
-
-                <div id="featureBackground" style="pointer-events:none;"></div>
-                <div class="hbox justify-center" id="click"></div>
-            </div>
-          </div>
-        </section>
-
         <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="about">
-            <div class="text-center py-5">
-                <h2 class="fw-bolder">About Me</h2>
-            </div>
+
+
             <div class="row">
                 <div class="col-lg-4" >
-                    <img class="img-fluid rounded-5" src="image/me12.png">
+
+                 <div class="container" style="display: flex; align-items: center; justify-content: center">
+                    <div class="qrcode" id="qrcode" style="padding-right: 30px;"></div>
+
+                    <div style="color:grey" > Scanning the QR code will let you control the website with your phone.
+                        Bonus: If you hide your phone while someone is looking, you will look like a wizard!</div>
+                    </div>
+
+                    <img class="img-fluid rounded-5" src="image/me2.png">
                 </div>
                 <div class="col-lg-7 offset-lg-1">
-                    <p class="lh-lg mb-6"> Hi! I'm Emma and a software developer. I'm passionate about machine learning, computer vision and all things data. I am currently working on training demand prediction models in the accommodation industry.
-                        I got MSci in Computing Science with specialization in machine learning from University of Glasgow.
-                    <br>
-                    In my free time, I volunteer at a local bird ringing group, paint (mostly birds) and play chess. I've been playing for 13 years, I am two time national chess champion and I've represented Slovakia at many international competitions
-                        including World Youth Chess Olympiad and European Chess Championships. I am also former president of the <a href="https://www.glasgowtimes.co.uk/news/19670693.glasgows-dukes-umbrella-host-queens-gambit-inspired-chess-club/"> Glasgow University Chess Society. </a></p>
+                                <div class="text-center py-5">
+                <h2 class="fw-bolder">About Me</h2>
+            </div>
+                    <p class="lh-lg mb-6"> Hi! I'm Emma and I am a software developer. I'm passionate about machine learning, computer vision and all things data. I am currently working on training demand prediction models in the accommodation industry.
+                        I have First class MSci in Computing Science with specialization in machine learning from University of Glasgow. My projects include building a computer vision pipeline to support the urban ecology department and creating an open source library to turn smartphones into game controllers.
+                    <br> <br>
+                    In my free time, I volunteer at a local bird ringing group, paint (mostly birds) and play chess. I've been playing for 13 years, I am two time national chess champion and I've represented my home country at many international competitions
+                        including World Youth Chess Olympiad and European Chess Championships. I am also a former president of the Glasgow University Chess Society. Even made it to a <a href="https://www.glasgowtimes.co.uk/news/19670693.glasgows-dukes-umbrella-host-queens-gambit-inspired-chess-club/"> local newspaper. </a></p>
 
                     <br>
                     <h3 class="fw-bold fs-4">Skills</h3>
@@ -185,6 +169,16 @@
                       <li>Adobe Illustrator</li>
                       <li>Unity + Blender basics</li>
                     </ul>
+
+                    <br>
+                    <br>
+                <a href="https://github.com/EmmaPoliakova" target="_blank">
+                  <img src="git.png" height="45px" width="45px"> Github
+                </a>
+                    &nbsp; &nbsp;
+                <a href="https://www.linkedin.com/in/emma-poliakova-a956941a3/" target="_blank">
+                  <img src="link.png" height="50px" width="50px"> Linkedin
+                </a>
                 </div>
 
             </div>
@@ -194,7 +188,7 @@
             <div class="container">
                 <div class="text-white text-center py-5">
                     <h2 class="fw-bolder">Portfolio</h2>
-                    <p class="fs-5">In this section, you will find all my previous major projects.</p>
+                    <p class="fs-5">In this section, you will find all my previous major projects and internship experience.</p>
                 </div>
             </div>
             
@@ -211,10 +205,10 @@
                 <div class="col-lg-7 offset-lg-1">
                     <p class="lh-lg mb-6"> For my MSci project I created a computer vision pipeline to aid biodiversity scientists with processing data. The data consisted of hundreds of hours blue tit nest box recordings.
                         The goal was to identify the types of food bird parents bring to their nestlings. This is currently done manually and is very time consuming. The pipeline I developed has 69% accuracy at food classification as either caterpillar or other insect.
-                        Furthermore, the pipeline is capable saving frames of the bird enters the nest boxes making it asy and convenient to verify the predicted labels.
+                        Furthermore, the pipeline is capable saving frames of the bird enters the nest boxes making it easy and convenient to verify the predicted labels.
                         <br>
                         <br>
-                        I presented my project as a poster at 14th European Ornithologists' Union Congress in Lund. This project also won MSci Project Prize for the Most Outstanding Project in Level 5 in Session 2022-23.
+                        I presented my project as a poster at 14th European Ornithologists' Union Congress in Lund, Sweden. This project also won MSci Project Prize for the Most Outstanding Project in Level 5 in Session 2022-23.
                     </p>
                 </div>
 
@@ -226,12 +220,23 @@
             <div class="container">
                 <div class="text-white text-center py-5">
                     <h2 class="fw-bolder">SmartControllerJS</h2>
-
                 </div>
+
+                    <p class="text-white fs-5"> During my summer internship and as my 4th year individual project I created an open source library to harness the power of smart phones.
+                        This library allows others to to create remote controllers that do not require any expensive equipment or software installations.
+                        The idea is to turn any phone into a controller such as a joystick, a NES controller, a voice control or hand tracker, by scanning a single QR code on a webpage.
+                        The open source library lets everyone do just this with very few lines of code.
+                        <br>
+                        During this project I learnt how to create well structured and useful <a href="https://smartcontrollerjs.github.io/SmartController/"> code documentation </a> but also improve usability and functionality by working with users of the library.
+                        This work was published on <a href="https://arxiv.org/abs/2208.02043"> arxiv </a>.
+                        <br>
+                        If you want to try it yourself, scan the QR code on the mini game below or the one on top of the page.
+
+                    </p>
 
                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-10 col-11 mx-auto">
                     <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html" width="100%", height="450"></iframe>
-                    <center><p class="fs-5"> As a reward for making it this far you can now play a mini game!</p></center>
+                    <center><p class="fs-5 text-white"> As a reward for making it this far you can now play a mini game!</p></center>
                 </div>
 
             </div>
@@ -240,12 +245,10 @@
  <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="tower">
             <div class="text-center py-5">
                 <h2 class="fw-bolder">Tower Builder App</h2>
-                <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
 
                 <div class="col-lg-7 offset-lg-1">
-                    <p class="lh-lg mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, molestiae commodi? Cum ullam voluptatum fuga modi? Quos possimus corrupti quisquam? Ratione, hic repellat distinctio iste at cumque ad harum architecto odio rem excepturi itaque minima praesentium quibusdam dolorum perferendis voluptas!</p>
-
+                <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
                      <div class="row pb-4" id="gallery">
                             <div class="col-12 col-sm-6 col-lg-5 mb-4">
@@ -265,8 +268,20 @@
             <div class="container">
                 <div class="text-white text-center py-5">
                     <h2 class="fw-bolder">Geological simulations</h2>
-                    <p class="fs-5"> </p>
                 </div>
+
+                <p class="text-white fs-5"> Between 2020 and 2021 I created mathematical-geological simulations for a geology masters course at Friedrich-Alexander-University in Erlangen-Nürnberg.
+                First, I created interactive simulations in JavaScript that could be embedded in a Moodle style textbook so that students can better understand the concepts in each chapter. These simulations allowed them to play with various
+                parameters and see the corresponding effects. The simulations I made include Forest fire, Potts model, Ising model, and diffusion model.
+                    <br>
+                The second task was to create learning notebooks to teach the students the programming principles behind the simulations. For this, I made Jupyter notebooks hosted on Binder. The exercises were focused on Game of life, Abelian sandpile,
+                fracturing and finite difference. There were empty sections for students to fill in, which once completed, would display the final simulation.
+
+                <br>
+                    <br>
+
+                Below you can try out the Potts model simulation:
+                </p>
 
                 <iframe src="https://emmapoliakova.github.io/simulations/potts_model.html"  width="100%" height = 550></iframe>
             </div>
@@ -276,12 +291,15 @@
          <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="hobby">
                 <div class="text-center py-5">
                     <h2 class="fw-bolder">Bird Ringing</h2>
+                </div>
+
+
                     <p class="fs-5"> Since October 2021, I've been part of Clyde Ringing Group. The goal of the group is to monitor bird population and track migration.
                         This is done by attaching a small metal ring with unique id to the bird's leg. When the bird is caught or seen later again we can track where it goes and how long it lives.
                         During the breading season the group checks also nest boxes. This data is used in studies that compare urban and forest bird survival.
                         Putting up new nest boxes is also beneficial for the birds as it provides more nesting spaces.
                         All of the collected data is very important for bird conservation and for understanding bird behaviour.  </p>
-                </div>
+
 
                 <div class="row pb-4" id="gallery" data-toggle="modal" data-target="#exampleModal">
                     <div class="col-12 col-sm-6 col-lg-3 mb-4">
