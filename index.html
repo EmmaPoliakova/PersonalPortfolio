@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma Poliakova</title>
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-callout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+      <!--<script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script> -->
+
+    <!--
+
+    Images are from https://unsplash.com/
+    -->
+
+
+</head>
+<body>
+    <script src="confetti.js"></script>
+    <script>
+
+        const start = () => {
+        setTimeout(function() {
+            confetti.start()
+        }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        function disableScroll() {
+          document.body.classList.add("remove-scrolling");
+        }
+
+        function enableScroll() {
+          document.body.classList.remove("remove-scrolling");
+        }
+
+
+      var pos = 0
+      var simplePeer;
+      var touchpad;
+
+      window.addEventListener('load', function () {
+        simplePeer = new smartcontroller.ScrollSmartController(firstConnected = true);
+        simplePeer.createQrCode('https://smartcontrollerjs.github.io/Controllers/blog_scroll_portfolio.html', 'qrcode', 150, 150,  "1", 0, false);
+
+        simplePeer.on("connection", function (data) {
+          console.log(simplePeer.controllerList)
+        })
+
+        simplePeer.on("data", function (data) {
+          touchpad = simplePeer.controllerList[0]
+
+          message = data.data.data;
+          if (message.type == "button") {
+            if(message.button_id == 'disco'){
+                disableScroll()
+                start();
+                stop();
+                enableScroll()
+            }
+            else {
+                ref = document.getElementById(message.button_id);
+                setTimeout(function () {
+                   ref.scrollIntoView({
+                       behavior: "smooth",
+                       block: "start",
+                   });
+              }, 100);
+            }
+          }
+          else if (message.type == "touchpad") {
+            touchpad = simplePeer.controllerList[Object.keys(simplePeer.controllerList)[0]];
+
+            if (touchpad.isActive) {
+
+              if (touchpad.direction) {
+                pos = 150
+              }
+
+              else {
+                pos = -150
+              }
+
+            }
+
+          }
+          window.scrollBy(0, pos);
+        })
+
+      })
+    </script>
+
+
+    <nav id="scrolling_navbar" class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Emma Poliakova</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav fw-bold">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#hobby">Birds!</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div data-bs-spy="scroll" data-bs-target="#scrolling_navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
+
+        <section class="min-vh-100 d-flex flex-wrap align-content-center" id="home" style="background-image: url('image/home.jpg'); background-size: cover;">
+          <div class="container d-flex align-items-center py-5">
+              <div class="col text-center bg-light m-4 p-4 text-dark bg-opacity-50 rounded-5 border border-2 border-white">
+                  <!--<img src="image/me.jpg" class="img-fluid col-lg-2 col-sm-6 col-xs-6 mb-4"> -->
+                <p class="display-2 text-secondary mb-3"style="color:#fcba03;">Emma Poliakova</p>
+                <p class="text-secondary fs-5 mb-6">Welcome to my portfolio website! </p>
+                <a href="https://github.com/EmmaPoliakova" target="_blank">
+                  <img src="git.png" height="45px" width="45px"> Github
+                </a>
+                    &nbsp; &nbsp;
+                <a href="https://www.linkedin.com/in/emma-poliakova-a956941a3/" target="_blank">
+                  <img src="link.png" height="50px" width="50px"> Linkedin
+                </a>
+                <div class="qrcode" id="qrcode" ></div>
+                <div style="color:grey" class="qrcode">Reading CVs is boring, scan the QR code to make it more exciting! This will let you control the website with your phone.
+                Bonus: If you hide your phone while someone is looking, you will look like a wizard!</div>
+
+                <div id="featureBackground" style="pointer-events:none;"></div>
+                <div class="hbox justify-center" id="click"></div>
+            </div>
+          </div>
+        </section>
+
+        <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="about">
+            <div class="text-center py-5">
+                <h2 class="fw-bolder">About Me</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" >
+                    <img class="img-fluid rounded-5" src="image/me12.png">
+                </div>
+                <div class="col-lg-7 offset-lg-1">
+                    <p class="lh-lg mb-6"> Hi! I'm Emma and a software developer. I'm passionate about machine learning, computer vision and all things data. I am currently working on training demand prediction models in the accommodation industry.
+                        I got MSci in Computing Science with specialization in machine learning from University of Glasgow.
+                    <br>
+                    In my free time, I volunteer at a local bird ringing group, paint (mostly birds) and play chess. I've been playing for 13 years, I am two time national chess champion and I've represented Slovakia at many international competitions
+                        including World Youth Chess Olympiad and European Chess Championships. I am also former president of the <a href="https://www.glasgowtimes.co.uk/news/19670693.glasgows-dukes-umbrella-host-queens-gambit-inspired-chess-club/"> Glasgow University Chess Society. </a></p>
+
+                    <br>
+                    <h3 class="fw-bold fs-4">Skills</h3>
+                    <ul style = "height: 100px;  display: flex;  flex-direction: column;  flex-wrap: wrap;">
+                      <li>Python</li>
+                      <li>Pytorch + Tensorflow</li>
+                      <li>Computer vision</li>
+                      <li>Machine/Deep learning</li>
+                      <li>Matplotlib/ Seaborn/ Plotly</li>
+                      <li>Javascript</li>
+                      <li>PHP       </li>
+                      <li>SQL       </li>
+                      <li>R         </li>
+                      <li>C#        </li>
+                      <li>Adobe Illustrator</li>
+                      <li>Unity + Blender basics</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="bg-dark py-5" id="portfolio">
+            <div class="container">
+                <div class="text-white text-center py-5">
+                    <h2 class="fw-bolder">Portfolio</h2>
+                    <p class="fs-5">In this section, you will find all my previous major projects.</p>
+                </div>
+            </div>
+            
+        </section>
+
+ <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="bluti">
+            <div class="text-center py-5">
+                <h2 class="fw-bolder">Blue Tit Computer Vision</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" >
+                    <img class="img-fluid rounded-1" id="poster" src="image/poster.jpg">
+                </div>
+                <div class="col-lg-7 offset-lg-1">
+                    <p class="lh-lg mb-6"> For my MSci project I created a computer vision pipeline to aid biodiversity scientists with processing data. The data consisted of hundreds of hours blue tit nest box recordings.
+                        The goal was to identify the types of food bird parents bring to their nestlings. This is currently done manually and is very time consuming. The pipeline I developed has 69% accuracy at food classification as either caterpillar or other insect.
+                        Furthermore, the pipeline is capable saving frames of the bird enters the nest boxes making it asy and convenient to verify the predicted labels.
+                        <br>
+                        <br>
+                        I presented my project as a poster at 14th European Ornithologists' Union Congress in Lund. This project also won MSci Project Prize for the Most Outstanding Project in Level 5 in Session 2022-23.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+          <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="bg-dark py-5" id="smart">
+            <div class="container">
+                <div class="text-white text-center py-5">
+                    <h2 class="fw-bolder">SmartControllerJS</h2>
+
+                </div>
+
+                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-10 col-11 mx-auto">
+                    <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html" width="100%", height="450"></iframe>
+                    <center><p class="fs-5"> As a reward for making it this far you can now play a mini game!</p></center>
+                </div>
+
+            </div>
+        </section>
+
+ <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="tower">
+            <div class="text-center py-5">
+                <h2 class="fw-bolder">Tower Builder App</h2>
+                <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+
+                <div class="col-lg-7 offset-lg-1">
+                    <p class="lh-lg mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, molestiae commodi? Cum ullam voluptatum fuga modi? Quos possimus corrupti quisquam? Ratione, hic repellat distinctio iste at cumque ad harum architecto odio rem excepturi itaque minima praesentium quibusdam dolorum perferendis voluptas!</p>
+
+
+                     <div class="row pb-4" id="gallery">
+                            <div class="col-12 col-sm-6 col-lg-5 mb-4">
+                              <img  style="height: 13vw" src="image/b.gif">
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-5 mb-4">
+                              <img style="height: 13vw" src="image/b1.gif">
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-1 mb-4">
+                              <img  style="height: 13vw" src="image/b2.gif">
+                            </div>
+                  </div>
+            </div>
+    </section>
+
+        <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="bg-dark py-5" id="simulation">
+            <div class="container">
+                <div class="text-white text-center py-5">
+                    <h2 class="fw-bolder">Geological simulations</h2>
+                    <p class="fs-5"> </p>
+                </div>
+
+                <iframe src="https://emmapoliakova.github.io/simulations/potts_model.html"  width="100%" height = 550></iframe>
+            </div>
+
+        </section>
+
+         <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="hobby">
+                <div class="text-center py-5">
+                    <h2 class="fw-bolder">Bird Ringing</h2>
+                    <p class="fs-5"> Since October 2021, I've been part of Clyde Ringing Group. The goal of the group is to monitor bird population and track migration.
+                        This is done by attaching a small metal ring with unique id to the bird's leg. When the bird is caught or seen later again we can track where it goes and how long it lives.
+                        During the breading season the group checks also nest boxes. This data is used in studies that compare urban and forest bird survival.
+                        Putting up new nest boxes is also beneficial for the birds as it provides more nesting spaces.
+                        All of the collected data is very important for bird conservation and for understanding bird behaviour.  </p>
+                </div>
+
+                <div class="row pb-4" id="gallery" data-toggle="modal" data-target="#exampleModal">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                      <img class="w-100 img-thumbnail" src="image/me.jpg" data-target="#carouselExample" data-slide-to="0">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                      <img class="w-100 img-thumbnail" src="image/photo-2.jpg" data-target="#carouselExample" data-slide-to="1">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                      <img class="w-100 img-thumbnail" src="image/photo-3.jpg" data-target="#carouselExample" data-slide-to="2">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                      <img class="w-100 img-thumbnail" src="image/photo-4.jpg" data-target="#carouselExample" data-slide-to="3">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                        <img class="w-100 img-thumbnail" src="image/photo-5.jpg" data-target="#carouselExample" data-slide-to="4">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                        <img class="w-100 img-thumbnail" src="image/photo-6.jpg" data-target="#carouselExample" data-slide-to="5">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                        <img class="w-100 img-thumbnail" src="image/photo-7.jpg" data-target="#carouselExample" data-slide-to="6">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                        <img class="w-100 img-thumbnail" src="image/photo-8.jpg" data-target="#carouselExample" data-slide-to="7">
+                    </div>
+                  </div>
+
+                  <!-- Modal -->
+                  <!--
+                  This part is straight out of Bootstrap docs. Just a carousel inside a modal.
+                  -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                              </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/me.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-2.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-3.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-4.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-5.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-6.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-7.jpg">
+                              </div>
+                              <div class="carousel-item" data-bs-interval="3000">
+                                <img class="d-block w-100" src="image/photo-8.jpg">
+                              </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExample" type="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExample" type="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+        <footer class="bg-light">
+            <div class="container">
+                <p class="copyright-text text-center fs-8 py-4 mb-0"> </p>
+                </div>
+        </footer>
+
+    </div>
+
+    <script>
+        function switchStyle() {
+        if (document.getElementById('styleSwitch').checked) {
+            document.getElementById('gallery').classList.add("custom");
+            document.getElementById('exampleModal').classList.add("custom");
+        } else {
+            document.getElementById('gallery').classList.remove("custom");
+            document.getElementById('exampleModal').classList.remove("custom");
+        }
+        };
+        
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+   
+</body>
+</html>
