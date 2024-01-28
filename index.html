@@ -12,15 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script> 
-
-    <!--
-
-    Images are from https://unsplash.com/
-    -->
-
-
+    <!-- <script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script> -->
 </head>
+
 <body>
     <script src="confetti.js"></script>
     <script>
@@ -48,11 +42,11 @@
         }
 
 
-      var pos = 0
-      var simplePeer;
-      var touchpad;
+        var pos = 0
+        var simplePeer;
+        var touchpad;
 
-      window.addEventListener('load', function () {
+        window.addEventListener('load', function () {
         simplePeer = new smartcontroller.ScrollSmartController(firstConnected = true);
         simplePeer.createQrCode('https://smartcontrollerjs.github.io/Controllers/blog_scroll_portfolio.html', 'qrcode', 100, 100,  "1", 0, false);
 
@@ -100,7 +94,7 @@
           window.scrollBy(0, pos);
         })
 
-      })
+        })
     </script>
 
 
@@ -108,8 +102,9 @@
         <div class="container">
           <a class="navbar-brand" href="#">Emma Poliakova</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav fw-bold">
               <li class="nav-item">
@@ -129,7 +124,6 @@
       <div data-bs-spy="scroll" data-bs-target="#scrolling_navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
 
         <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="about">
-
 
             <div class="row">
                 <div class="col-lg-4" >
@@ -200,7 +194,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4" >
-                    <img class="img-fluid rounded-1" id="poster" src="image/poster.jpg">
+                    <img class="img-fluid rounded-1" id="poster" src="image/poster.png">
                 </div>
                 <div class="col-lg-7 offset-lg-1">
                     <p class="lh-lg mb-6"> For my MSci project I created a computer vision pipeline to aid biodiversity scientists with processing data. The data consisted of hundreds of hours blue tit nest box recordings.
@@ -222,7 +216,16 @@
                     <h2 class="fw-bolder">SmartControllerJS</h2>
                 </div>
 
-                    <p class="text-white fs-5"> During my summer internship and as my 4th year individual project I created an open source library to harness the power of smart phones.
+                <div class="row">
+
+                <div class="col-lg-4" style="float:left">
+                    <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html"
+                    style="width: 550px; height: 450px; float:left; padding-right: 30px;"></iframe>
+                 </div>
+
+                <div class="col-lg-7 offset-lg-1">
+
+                    <p class="text-white lh-lg mb-6"> During my summer internship and as my 4th year individual project I created an open source library to harness the power of smart phones.
                         This library allows others to to create remote controllers that do not require any expensive equipment or software installations.
                         The idea is to turn any phone into a controller such as a joystick, a NES controller, a voice control or hand tracker, by scanning a single QR code on a webpage.
                         The open source library lets everyone do just this with very few lines of code.
@@ -234,9 +237,11 @@
 
                     </p>
 
-                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-10 col-11 mx-auto">
-                    <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html" width="100%", height="450"></iframe>
-                    <center><p class="fs-5 text-white"> As a reward for making it this far you can now play a mini game!</p></center>
+<!--                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-10 col-11 mx-auto">-->
+<!--                    <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html" width="100%", height="450"></iframe>-->
+<!--                    <center><p class="fs-5 text-white"> As a reward for making it this far you can now play a mini game!</p></center>-->
+<!--                </div>-->
+                </div>
                 </div>
 
             </div>
@@ -246,22 +251,37 @@
             <div class="text-center py-5">
                 <h2 class="fw-bolder">Tower Builder App</h2>
             </div>
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <img style="height: 30vw;  float: left;" src="image/tower.gif">
+                 </div>
 
                 <div class="col-lg-7 offset-lg-1">
-                <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="lh-lg mb-6"> For my 3rd year university group project I worked in a team of 5 people to create a phone app called Tower Builder.
+                    The goal of this app was to motivate students to attend lectures, be part of student societies and spend time studying. Each of these
+                    activities would be rewarded by a certain amount of in app currency allowing the student to purchase new blocks for their tower.
+                    <br> <br>
+                    The app was built in Unity and I created all the 3D tower pieces (30 models in total) and landscape in Blender.
+                    I was also in charge of the coding the shop system for purchasing new blocks.
+                    </p>
+<!--                </div>-->
 
-                     <div class="row pb-4" id="gallery">
-                            <div class="col-12 col-sm-6 col-lg-5 mb-4">
-                              <img  style="height: 13vw" src="image/b.gif">
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-5 mb-4">
-                              <img style="height: 13vw" src="image/b1.gif">
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-1 mb-4">
-                              <img  style="height: 13vw" src="image/b2.gif">
-                            </div>
+<!--            </div>-->
+<!--            <div class="col-lg-7 offset-lg-1">-->
+                  <div class="row pb-4" id="gallery">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                      <img  style="height: 10vw" src="image/b.gif">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                      <img style="height: 10vw" src="image/b1.gif">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-1 mb-4">
+                      <img  style="height: 10vw" src="image/b2.gif">
+                    </div>
                   </div>
             </div>
+
     </section>
 
         <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="bg-dark py-5" id="simulation">
@@ -270,20 +290,29 @@
                     <h2 class="fw-bolder">Geological simulations</h2>
                 </div>
 
-                <p class="text-white fs-5"> Between 2020 and 2021 I created mathematical-geological simulations for a geology masters course at Friedrich-Alexander-University in Erlangen-Nürnberg.
+                <div class="row">
+
+                <div class="col-lg-4" style="float:left">
+                    <iframe src="https://emmapoliakova.github.io/simulations/potts_model.html"
+                    style="width: 550px; height: 850px; float:left;"></iframe>
+                 </div>
+
+                <div class="col-lg-7 offset-lg-1">
+                    <p class="text-white lh-lg mb-6">
+                 Between 2020 and 2021 I created mathematical-geological simulations for a geology masters course at Friedrich-Alexander-University in Erlangen-Nürnberg.
                 First, I created interactive simulations in JavaScript that could be embedded in a Moodle style textbook so that students can better understand the concepts in each chapter. These simulations allowed them to play with various
                 parameters and see the corresponding effects. The simulations I made include Forest fire, Potts model, Ising model, and diffusion model.
                     <br>
                 The second task was to create learning notebooks to teach the students the programming principles behind the simulations. For this, I made Jupyter notebooks hosted on Binder. The exercises were focused on Game of life, Abelian sandpile,
                 fracturing and finite difference. There were empty sections for students to fill in, which once completed, would display the final simulation.
 
-                <br>
-                    <br>
-
-                Below you can try out the Potts model simulation:
+                        <br>
+                        Here you can try the Potts model simulation.
                 </p>
+                </div>
+                </div>
 
-                <iframe src="https://emmapoliakova.github.io/simulations/potts_model.html"  width="100%" height = 550></iframe>
+
             </div>
 
         </section>
@@ -294,7 +323,7 @@
                 </div>
 
 
-                    <p class="fs-5"> Since October 2021, I've been part of Clyde Ringing Group. The goal of the group is to monitor bird population and track migration.
+                    <p class = "lh-lg mb-6"> Since October 2021, I've been part of Clyde Ringing Group. The goal of the group is to monitor bird population and track migration.
                         This is done by attaching a small metal ring with unique id to the bird's leg. When the bird is caught or seen later again we can track where it goes and how long it lives.
                         During the breading season the group checks also nest boxes. This data is used in studies that compare urban and forest bird survival.
                         Putting up new nest boxes is also beneficial for the birds as it provides more nesting spaces.
