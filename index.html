@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-     <script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script>
+    <script src="https://unpkg.com/smartcontroller@3.2.8/dist/smartcontroller.min.js"> </script>
 </head>
 
 <body>
@@ -52,13 +52,14 @@
 
         simplePeer.on("connection", function (data) {
           console.log(simplePeer.controllerList)
+          touchpad = simplePeer.controllerList[Object.keys(simplePeer.controllerList)[0]];
         })
 
         simplePeer.on("data", function (data) {
-          touchpad = simplePeer.controllerList[0]
 
           message = data.data.data;
           if (message.type == "button") {
+            pos = 0;
             if(message.button_id == 'disco'){
                 disableScroll()
                 start();
@@ -67,31 +68,30 @@
             }
             else {
                 ref = document.getElementById(message.button_id);
+
                 setTimeout(function () {
                    ref.scrollIntoView({
-                       behavior: "smooth",
                        block: "start",
                    });
               }, 100);
             }
           }
           else if (message.type == "touchpad") {
-            touchpad = simplePeer.controllerList[Object.keys(simplePeer.controllerList)[0]];
 
             if (touchpad.isActive) {
 
               if (touchpad.direction) {
-                pos = 150
-              }
 
+                window.scrollBy(0, pos + 250);
+              }
               else {
-                pos = -150
-              }
 
+                window.scrollBy(0, pos-250);
+              }
             }
 
           }
-          window.scrollBy(0, pos);
+
         })
 
         })
@@ -220,7 +220,7 @@
 
                 <div class="row">
 
-                <div class="col-lg-4" style="float:left">
+                <div class="col-lg-4" style="min-width:400px;">
                     <iframe src="https://emmapoliakova.github.io/WebRTCSmartphoneController/demo/tinyPlatformer/index.html"
                     style="width: 550px; height: 450px; float:left; padding-right: 30px;"></iframe>
                  </div>
@@ -233,8 +233,8 @@
                         Only a few lines of code are required to get started.
                         <br>
                         <br>
-                        During this project, I learnt how to create well structured and useful <a href="https://smartcontrollerjs.github.io/SmartController/"> code documentation </a> but also improve usability and functionality by working with users of the library.
-                        This work was published on <a href="https://arxiv.org/abs/2208.02043"> arxiv </a>.
+                        During this project, I learnt how to create well structured and useful <a href="https://smartcontrollerjs.github.io/SmartController/" target="_blank"> code documentation </a> but also improve usability and functionality by working with users of the library.
+                        This work was published on <a href="https://arxiv.org/abs/2208.02043" target="_blank"> arxiv </a>.
                         <br>
                         <br>
                         If you want to try it yourself, scan the QR code on the mini game (your reward for making it this far) or the one on top of the page.
@@ -291,7 +291,7 @@
 
                 <div class="row">
 
-                <div class="col-lg-4" style="float:left">
+                <div class="col-lg-4" style="min-width:400px;">
                     <iframe src="https://emmapoliakova.github.io/simulations/potts_model.html"
                     style="width: 550px; height: 850px; float:left;"></iframe>
                  </div>
